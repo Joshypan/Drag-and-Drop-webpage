@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "bbGenerator.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="images/bubble.png"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700|Playfair+Display:400,700|Montserrat:400,700&display=swap">
+    <title>The Bikini Bottom Generator</title>
+  </head>
+    <body>
+      <h1>The Bikini Bottom Generator</h1>
+      <div class = "main">        
+          <h2>Follow the steps to create your own Spongebob webpage!</h2>
+          <p><u>Choose your character(s)</u></p> 
+          <?xml version="1.0" encoding="UTF-8"?>
+          <characters>
+            <character class="Krabs">Mr.Krabs</character>
+            <character class="Patrick">Patrick</character>
+            <character class="Plankton">Plankton</character>
+            <character class="Mop">Mop Guy</character>
+            <character class="Puff">Mrs.Puff</character>
+            <character class="Spongebob">Spongebob</character>
+            <character class="Squidward">Squidward</character>
+          </characters>
+          <div class = "allImages">
+          <img class = "selectable" src="images/Krabs.png" alt="Mr.Krabs" width="125" height="125"/>
+          <img class = "selectable" src="images/patrickStar.png" alt="Patrick Star" width="125" height="125"/>
+          <img class = "selectable" src="images/Plankton.png" alt="Plankton" width="125" height="125"/>
+          <img class = "selectable" src="images/Mop.png" alt="Mop" width="125" height="125"/>
+          <img class = "selectable" src="images/Puff.png" alt="Mrs.Puff" width="125" height="125"/>
+          <img class = "selectable" src="images/Spongebob.png" alt="Spongebob Squarepants" width="125" height="125"/>
+          <img class = "selectable" src="images/Squidward.png" alt="Squidward" width="125" height="125"/>
+        </div>
+          <p><u>Select a background</u></p>
+          <background>
+            <setting class="Gas">Gas Station</setting>
+            <setting class="Hotel">Hotel</setting>
+            <setting class="Houses">Houses</setting>
+            <setting class="Meadow">Meadow</setting>
+            <setting class="Needle">The Needle</setting>
+            <setting class="Pineapple">Spongebob's house</setting>
+          </background>
+          <div class = "allImages2">
+          <img class = "selectableBack" src="images/Gas.png" alt="test" width="185" height="125"/>
+          <img class = "selectableBack" src="images/hotel.png" alt="test" width="185" height="125"/>
+          <img class = "selectableBack" src="images/houses.png" alt="test" width="185" height="125"/>
+          <img class = "selectableBack" src="images/Meadow.png" alt="test" width="185" height="125"/>
+          <img class = "selectableBack" src="images/Needle.png" alt="test" width="185" height="125"/>
+          <img class = "selectableBack" src="images/Pineapple.png" alt="test" width="185" height="125"/>
+        </div>
+        <button onclick="openWindow()" class="button">CREATE ENVIRONMENT</button>
+        <button onclick="closeWindow()" class="button">CLOSE ENVIRONMENT</button>
+        <div class="Table">
+          <h1>Website Elements</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>XML</th>
+                <th>HTML</th>
+                <th>CSS</th>
+                <th>JavaScript</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Character's Name</td>
+                <td>All PNG's on site</td>
+                <td>Background image</td>
+                <td>Selection Logic</td>
+              </tr>
+              <tr>
+                <td>Background Names</td>
+                <td>Main content headers</td>
+                <td>Overall styling</td>
+                <td>Button functionality</td>
+              </tr>
+              <tr>
+                <td> </td>
+                <td>Buttons </td>
+                <td>Fonts</td>
+                <td>Web Generator Drag and Drop</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+    <script>
+      var myWindow = null;
+      const selectableImages = document.querySelectorAll(".selectable");
+      var selectedCharacterUrls = [];
+
+      selectableImages.forEach(image => {
+      image.addEventListener("click", function() {
+        if (this.classList.contains("selected")) {
+          this.classList.remove("selected");
+          const imageUrlToRemove = this.getAttribute("src");
+          selectedCharacterUrls = selectedCharacterUrls.filter(url => url !== imageUrlToRemove);
+        } else {
+          this.classList.add("selected");
+          selectedCharacterUrls.push(this.getAttribute("src"));
+        }
+        console.log("selected", selectedCharacterUrls);
+        });
+      });
+
+        const selectableBack = document.querySelectorAll(".selectableBack");
+        var selectedBackUrl = "";
+        selectableBack.forEach(image => {
+          image.addEventListener("click", function() {
+              selectableBack.forEach(img => img.classList.remove("selected"));
+              this.classList.add("selected");
+              selectedBackUrl = this.getAttribute("src");
+              console.log("selected", selectedBackUrl);
+          });
+        });
+
+        function openWindow() {
+        myWindow = window.open("", "", "width=800,height=500");
+        var page = `<script src="dragAndDrop.js"></scr` + `ipt>`;
+        page += `<body style="background-image: url(${selectedBackUrl}); background-size: 100% 100%; background-attachment: fixed; z-index: -20;">`;
+        selectedCharacterUrls.forEach((e) => {
+          var characterPage = page;
+          characterPage += `<img onmousedown="grabber(event)" src="${e}" style="position: absolute; top: 200px; left: 0px; width: 100px; height: 100px; z-index: 3">`;
+          myWindow.document.write(characterPage);
+        });
+      }
+
+      function closeWindow() {
+            myWindow.close();
+        }             
+    </script>
+</html>

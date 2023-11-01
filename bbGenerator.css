@@ -1,0 +1,124 @@
+body {
+    background-image: url("images/Meadow.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+}
+
+.main
+{
+    background-color: #59c789;
+    border-style: solid;
+    margin: 50px 100px; 
+    padding-bottom: 200px; 
+}
+
+h1, h2, p {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+}
+
+h1, h2 {
+    text-shadow: 2px 2px 4px #000;
+    color: #FFA500;
+}
+
+.allImages {
+    text-align: center;
+    cursor: pointer;
+    transform: translate(0%, 10%);
+
+}
+.allImages2{
+    text-align: center;
+    cursor: pointer;
+}
+
+.button {
+    background-color: #FF4500;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transform: translate(0%, 100%);
+}
+
+.selected {
+    border: 2px solid #FFA500; 
+}
+
+character{
+    padding-right: 2%;
+    padding-left: 2.5%;
+}
+
+.Krabs{
+    padding-left: 2% ;
+}
+
+.Patrick{
+    padding-left: 3%;
+}
+
+.Plankton{
+    padding-left: 3%;
+}
+
+.Gas{
+    padding-left: 10%;
+    padding-right: 7%;
+}
+
+.Hotel{
+    padding-left: 1%;
+    padding-right: 6%;
+}
+
+.Houses{
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.Meadow{
+    padding-left: 5%;
+    padding-right: 0%;
+}
+
+.Needle{
+    padding-left: 7%;
+    padding-right: 5%;
+}
+
+.Pineapple{
+    padding-left: 0%;
+    padding-right: 9%;
+}
+
+background, characters, p{
+    font-size: large;
+}
+
+.Table {
+    text-align: center;
+    margin: 0 auto;
+    transform: translate(0%, 30%);
+}
+
+table {
+    margin: 0 auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+}
